@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demo.inventory.rest.InventoryRestControllerTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.514 s <<< FAILURE! - in com.example.demo.inventory.rest.InventoryRestControllerTests
+updatePlantEquipmentCondition(com.example.demo.inventory.rest.InventoryRestControllerTests)  Time elapsed: 0.368 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[2]00> but was:<[4]00>
+	at com.example.demo.inventory.rest.InventoryRestControllerTests.updatePlantEquipmentCondition(InventoryRestControllerTests.java:90)
+

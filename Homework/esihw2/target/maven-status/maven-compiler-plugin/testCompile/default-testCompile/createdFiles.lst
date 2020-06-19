@@ -1,0 +1,7 @@
+com/example/demo/sales/rest/SalesRestControllerTests.class
+com/example/demo/sales/rest/SalesRestControllerTests$1.class
+com/example/demo/models/InventoryRepositoryTest.class
+com/example/demo/sales/SalesAcceptanceTestsRunner.class
+com/example/demo/sales/CreationOfPurchaseOrderSteps.class
+com/example/demo/DemoApplicationTests.class
+com/example/demo/inventory/rest/InventoryRestControllerTests.class

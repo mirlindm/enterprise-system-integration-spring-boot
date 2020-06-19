@@ -1,0 +1,8 @@
+H2 TEST QUERIES
+
+QUERY 2:
+
+
+select pie.name, DATEDIFF(DAY, PARSEDATETIME(FORMATDATETIME('2017-03-22', 'yyyy-MM-dd'), 'yyyy-MM-dd') , PARSEDATETIME(FORMATDATETIME('2017-03-24', 'yyyy-MM-dd'), 'yyyy-MM-dd')) - nvl(sum(DATEDIFF(DAY,pr.start_date , pr.end_date)),0) as aaa 
+from plant_inventory_entry pie left join plant_inventory_item pii  on pie.id = pii.plant_info_id left join plant_reservation pr on pii.id = pr.plant_id and pr.start_date >= PARSEDATETIME(FORMATDATETIME('2017-03-22', 'yyyy-MM-dd'), 'yyyy-MM-dd') and pr.end_date <= PARSEDATETIME(FORMATDATETIME('2017-03-24', 'yyyy-MM-dd'), 'yyyy-MM-dd') 
+group by pie.name

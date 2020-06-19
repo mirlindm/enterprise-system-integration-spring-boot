@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demo.models.InventoryRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 7.272 s <<< FAILURE! - in com.example.demo.models.InventoryRepositoryTest
+queryPlantCatalog(com.example.demo.models.InventoryRepositoryTest)  Time elapsed: 0.034 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[1]4L> but was:<[]4L>
+	at com.example.demo.models.InventoryRepositoryTest.queryPlantCatalog(InventoryRepositoryTest.java:51)
+
+findAvailableTest(com.example.demo.models.InventoryRepositoryTest)  Time elapsed: 0.037 s  <<< ERROR!
+org.springframework.dao.IncorrectResultSizeDataAccessException: query did not return a unique result: 2; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 2
+	at com.example.demo.models.InventoryRepositoryTest.findAvailableTest(InventoryRepositoryTest.java:73)
+Caused by: javax.persistence.NonUniqueResultException: query did not return a unique result: 2
+	at com.example.demo.models.InventoryRepositoryTest.findAvailableTest(InventoryRepositoryTest.java:73)
+

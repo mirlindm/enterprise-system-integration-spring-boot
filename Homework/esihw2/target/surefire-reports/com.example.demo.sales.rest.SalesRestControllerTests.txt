@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demo.sales.rest.SalesRestControllerTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.744 s <<< FAILURE! - in com.example.demo.sales.rest.SalesRestControllerTests
+testPurchaseOrderAcceptance(com.example.demo.sales.rest.SalesRestControllerTests)  Time elapsed: 0.046 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.ScriptStatementFailedException: 
+Failed to execute SQL script statement #1 of class path resource [plants-dataset.sql]: insert into plant_inventory_entry (id, name, description, price) values (1, 'Mini excavator', '1.5 Tonne Mini excavator', 150); nested exception is org.h2.jdbc.JdbcSQLException: Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PLANT_INVENTORY_ENTRY(ID)"; SQL statement:
+insert into plant_inventory_entry (id, name, description, price) values (1, 'Mini excavator', '1.5 Tonne Mini excavator', 150) [23505-197]
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PLANT_INVENTORY_ENTRY(ID)"; SQL statement:
+insert into plant_inventory_entry (id, name, description, price) values (1, 'Mini excavator', '1.5 Tonne Mini excavator', 150) [23505-197]
+
