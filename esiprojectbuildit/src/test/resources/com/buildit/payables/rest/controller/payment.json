@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "paymentDate": "2020-05-12",
+  "bankName": "Swedbank",
+  "amountPaid": 1000,
+  "invoice": {
+    "_id": 1,
+    "invoiceNumber": "Invoice 1",
+    "supplier": "RentIT",
+    "invoiceDate": "2020-05-12",
+    "total": 1000.00,
+    "poID": 1,
+    "status": null
+  },
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/payables/1"
+    }
+  }
+}

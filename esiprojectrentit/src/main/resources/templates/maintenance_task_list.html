@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">RentIT</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a th:href="${'/po-list'}">PO List</a></li>
+                <li><a th:href="${'/maintenance'}">Create Maintenance</a></li>
+                <li class="active"><a th:href="${'/maintenance-list'}">Maintenance Task List</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="alert alert-warning" role="alert" th:text="${errorMessage}" th:unless="${errorMessage == null}">
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">List of Maintenance Tasks</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Type of work</th>
+                    <th>Total</th>
+                    <th>Rental start date</th>
+                    <th>Rental end date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="table-row" th:each="task : ${taskList}">
+                    <td th:text="${task.id}"></td>
+                    <td th:text="${task.description}"></td>
+                    <td th:text="${task.type_of_work}"></td>
+                    <td th:text="${task.total}"></td>
+                    <td th:text="${task.rentalPeriod.startDate}"></td>
+                    <td th:text="${task.rentalPeriod.endDate}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

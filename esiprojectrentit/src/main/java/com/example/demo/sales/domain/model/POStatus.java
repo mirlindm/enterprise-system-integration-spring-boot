@@ -1,0 +1,3 @@
+package com.example.demo.sales.domain.model;
+
+public enum POStatus { PENDING, REJECTED, OPEN, CANCELLED, ACCEPTED, PLANT_DISPATCHED, PLANT_DELIVERED, PLANT_REJECTED, PLANT_RETURNED, PAID }

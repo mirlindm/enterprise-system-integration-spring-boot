@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "status": "ACCEPTED",
+  "plantEntry": {
+    "_id": 1,
+    "name": "Mini excavator",
+    "description": "1.5 Tonne Mini excavator",
+    "price": 150.00
+  },
+  "rentalPeriod": {
+    "startDate": "2020-07-10",
+    "endDate": "2020-07-31"
+  },
+  "total": 3150.00
+}

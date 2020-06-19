@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PO List</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">BuildIT</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a th:href="${'/'}">Search plants</a></li>
+                <li><a th:href="${'/phr-list'}">Plant Hire Requests</a></li>
+                <li class="active"><a th:href="${'/po-list'}">Purchase Orders</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="alert alert-warning" role="alert" th:text="${errorMessage}" th:unless="${errorMessage == null}">
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">List of Purchase Orders</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Plant name</th>
+                        <th>Total price</th>
+                        <th>Status</th>
+                        <th>Rental start date</th>
+                        <th>Rental end date</th>
+                        <th>Invoice</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr class="table-row" th:each="po,iter : ${pos}">
+                    <td th:text="${po.id}"></td>
+                    <td th:text="${po.plantEntry.name}"></td>
+                    <td th:text="${po.total}"></td>
+                    <td th:text="${po.status}"></td>
+                    <td>
+                        <span th:text="${po.rentalPeriod.startDate}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${po.rentalPeriod.endDate}"></span>
+                    </td>
+                    <td th:text="${invoices[iter.index] == null ? '-' : (invoices[iter.index].getStatus() == APPROVED_INVOICE ? 'Approved invoice' : 'Unapproved invoice')}">[invoice]</td>
+                    <td>
+                        <a th:href="@{'/extend-po/'+${po.id}}" class="label label-warning" style="display: inline-block">Extend</a>
+                        <a th:unless="${invoices[iter.index] == null}"
+                           th:href="@{'/approve-invoice/'+${invoices[iter.index].id}}"
+                           class="label label-success" style="display: inline-block">
+                            Accept Invoice
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

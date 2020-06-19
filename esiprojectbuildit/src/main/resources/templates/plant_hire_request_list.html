@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHR List</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">BuildIT</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a th:href="${'/'}">Search plants</a></li>
+                <li class="active"><a th:href="${'/phr-list'}">Plant Hire Requests</a></li>
+                <li><a th:href="${'/po-list'}">Purchase Orders</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="alert alert-warning" role="alert" th:text="${errorMessage}" th:unless="${errorMessage == null}">
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">List of Plant Hire Requests</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>PHR ID</th>
+                    <th>Plant ID</th>
+                    <th>Plant Name</th>
+                    <th>Site Eng.</th>
+                    <th>Construction Site</th>
+                    <th>Status</th>
+                    <th>Supplier</th>
+                    <th>Total cost</th>
+                    <th>Rental period</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="table-row" th:each="phr : ${phrs}">
+                    <td th:text="${phr.id}"></td>
+                    <td th:text="${phr.entryId}"></td>
+                    <td th:text="${phr.entryName}"></td>
+                    <td th:text="${phr.nameOfSiteEngineer}"></td>
+                    <td th:text="${phr.nameOfConstructionSite}"></td>
+                    <td th:text="${phr.status}"></td>
+                    <td th:text="${phr.supplier}"></td>
+                    <td th:text="${phr.totalCost}"></td>
+                    <td>
+                        <span th:text="${phr.rentalPeriod.startDate}"></span>
+                        ->
+                        <span th:text="${phr.rentalPeriod.endDate}"></span>
+                    </td>
+                    <td>
+                        <a th:href="@{'/edit-phr/'+${phr.id}}" th:if="${phr.status == 'CANCELED'}" class="label label-default" style="display: inline-block">Edit</a>
+                        <a th:href="@{'/cancel-phr/'+${phr.id}}" th:if="${phr.status == 'PENDING'}" class="label label-danger" style="display: inline-block">Cancel</a>
+                        <a th:href="@{'/approve-phr/'+${phr.id}}" th:if="${phr.status == 'PENDING'}" class="label label-success" style="display: inline-block">Approve</a>
+                        <a th:href="@{'/reject-phr/'+${phr.id}}" th:if="${phr.status == 'PENDING'}" class="label label-warning" style="display: inline-block">Reject</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
